@@ -1,2 +1,2 @@
 # personal-schedule
-personal daily schedule
+Personal schedule webapp I made to track and notify my work.
