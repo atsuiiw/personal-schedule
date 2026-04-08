@@ -1,0 +1,151 @@
+:root{
+  --primary-color: #d9e0ee;
+  --secondary-color: #384252;
+  --background-color: #282c34;
+  --modal-border-radius: 20px;
+  --list-color-odd: rgb(50, 54, 63);
+  --list-color-even: rgb(57, 62, 72);
+}
+
+.App {
+  text-align: center;
+  background-color: var(--background-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.modal-open{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border: none;
+  
+  position: fixed;
+  font-size: 50px;
+  height: 100px;
+  width: 100px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+  border-radius: 50%;
+
+  transition: 0.2s;
+}
+
+.modal-open:hover{
+  cursor: pointer;
+  opacity: 0.9;
+  scale: 0.9;
+}
+
+.modal-open:active{
+  opacity: 0.8;
+  scale: 0.8;
+}
+
+.modal-wrapper{
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  z-index: -99;
+}
+
+.modal-wrapper.show{
+  opacity: 1;
+  z-index: 1;
+}
+.schedule-box{
+  position: fixed;
+  width: 70%;
+  height: 70%;
+  left: 15%;
+  top: 15%;
+  z-index: 2;
+  transform: scale(0.9);
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  border-radius: var(--modal-border-radius);
+}
+
+.modal-wrapper.show .schedule-box{
+  transform: scale(1);
+}
+.blur-box{
+  background: rgba(0, 0, 0, 0.1); /* Semi-transparent color */
+  backdrop-filter: blur(0px);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  transition: backdrop-filter 0.3s ease;
+}
+
+.modal-wrapper.show .blur-box{
+  backdrop-filter: blur(10px);
+}
+
+.schedule-box .header{
+  display: flex;
+  align-items: center;
+  height: 10%;
+  background-color: var(--background-color);
+  border-radius: var(--modal-border-radius) var(--modal-border-radius) 0px 0px;
+}
+
+.schedule-box .time{
+  flex: 2;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.schedule-box .task{
+  flex: 8;
+  text-align: center;
+}
+
+.table{
+  height: 90%;
+  display: grid;
+  gap: 0;
+  align-items: stretch;
+}
+
+.content-list{
+  display:flex;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.content-list > div{
+  margin: 0;
+  border-radius: var(--modal-border-radius);
+}
+
+.content-list:hover{
+  opacity: 0.8;
+}
+
+.odd{
+  background-color: var(--list-color-odd);
+}
+
+.even{
+  background-color: var(--list-color-even);
+}
