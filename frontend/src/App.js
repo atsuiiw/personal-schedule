@@ -18,7 +18,7 @@ const NextSchedule = ({data,timeNow}) => {
   const next = data.find(item => item.time > current) || data[0];
   
   return (
-    <div> Next Schedule at {next.time} - {next.state} </div>
+    <div className='text'> Next Schedule at {next.time} - {next.state} </div>
   )
 }
 
@@ -26,7 +26,7 @@ const Table = ({data}) =>{
   return (
     <div className='table'>
       {data.map((item, index) => (
-        <div key={item.id} className={'content-list ' + (index%2 ? "odd" : "even")}>
+        <div key={item.id} className={'content-list ' + (index%2 ? "odd" : "even") + (index===data.length-1 ? " lastOnList" : "")} >
           <div className='time'>{item.time}</div>
           <div className='task'>{item.state}</div>
         </div>
@@ -76,7 +76,8 @@ function App() {
   
   return (
     <div className="App">
-      <h1> Schedule (April)</h1>
+      <h1 className='header-page'> Schedule (April)</h1>
+      <h1 className='description'> Personal Schedule Program </h1>
       <TimerHeader currentTime={currentTime} />
       <NextSchedule data={sortedData} timeNow={currentTime}/>
       <button className='modal-open' onClick={() => setShowModal(!showModal)}>👁</button>
