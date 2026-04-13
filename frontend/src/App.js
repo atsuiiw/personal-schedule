@@ -33,19 +33,6 @@ const NextSchedule = ({data,timeNow}) => {
   )
 }
 
-const Table = ({data}) =>{
-  return (
-    <div className='table'>
-      {data.map((item, index) => (
-        <div key={item.id} className={'content-list ' + (index%2 ? "odd" : "even") + (index===data.length-1 ? " lastOnList" : "")} >
-          <div className='time'>{item.time}</div>
-          <div className='task'>{item.state}</div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 let snd = new Audio("alarm.mp3")
 const playSound = () =>{snd.play(); snd.currentTime = 0;}
 
