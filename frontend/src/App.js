@@ -205,7 +205,7 @@ function App() {
   useEffect(() => { // fetch data
     const fetchSchedule = async () => {
       try {
-        const response = await fetch('${API_BASE_URL}/api/v1/users');
+        const response = await fetch(`${API_BASE_URL}/api/v1/users`);
         if (!response.ok) throw new Error('Failed to load schedule data');
         const result = await response.json();
         const normalized = result.map((item) => ({
@@ -269,7 +269,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('${API_BASE_URL}/api/v1/users', {
+      const response = await fetch(`${API_BASE_URL}/api/v1/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
