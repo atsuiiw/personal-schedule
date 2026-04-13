@@ -33,6 +33,8 @@ const NextSchedule = ({data,timeNow}) => {
   )
 }
 
+console.log("test");
+
 let snd = new Audio("alarm.mp3")
 const playSound = () =>{snd.play(); snd.currentTime = 0;}
 
