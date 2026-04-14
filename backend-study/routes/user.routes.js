@@ -3,7 +3,7 @@ import User from '../models/user.model.js';
 
 const userRouter = Router();
 
-userRouter.get('/', async (req, res) => {
+userRouter.get('/getSchedule', async (req, res) => {
     try {
         const users = await User.find();
         res.json(users);
@@ -12,7 +12,7 @@ userRouter.get('/', async (req, res) => {
     }
 });
 
-userRouter.get('/:id', async (req, res) => {
+userRouter.get('getId/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) return res.status(404).json({ message: 'User not found' });
@@ -22,7 +22,7 @@ userRouter.get('/:id', async (req, res) => {
     }
 });
 
-userRouter.post('/', async (req, res, next) => {
+userRouter.post('/createData', async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
         res.status(201).json(newUser);
@@ -31,7 +31,7 @@ userRouter.post('/', async (req, res, next) => {
     }
 });
 
-userRouter.put('/:id', async (req, res) => {
+userRouter.put('putId/:id', async (req, res) => {
     try {
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
@@ -45,7 +45,7 @@ userRouter.put('/:id', async (req, res) => {
     }
 });
 
-userRouter.delete('/:id', async (req, res) => {
+userRouter.delete('deleteData/:id', async (req, res) => {
     try {
         const deletedUser = await User.findByIdAndDelete(req.params.id);
         if (!deletedUser) return res.status(404).json({ message: 'User not found' });

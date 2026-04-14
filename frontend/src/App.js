@@ -2,6 +2,11 @@ import './App.css';
 import { useState, useEffect } from 'react';
 const API_BASE_URL = "https://personal-schedule.onrender.com";
 
+// const data = await fetch(`/api/v1/users/getSchedule`,{
+//   method: 'GET'
+//   });
+// console.log(data);
+
 const formatTime = (time) => {
   if (typeof time === 'string') return time.padStart(5, '0');
   if (time && typeof time === 'object') {
@@ -80,7 +85,7 @@ const ModalPopup = ({ show, data, editMode, onClose, onScheduleUpdated, onSchedu
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/users/${editTask.id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/v1/users/putId/${editTask.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -112,7 +117,7 @@ const ModalPopup = ({ show, data, editMode, onClose, onScheduleUpdated, onSchedu
     if (!confirmEdit(`Delete schedule for ${item.time} - ${item.state}?`)) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/users/${item.id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/v1/users/deleteData/${item.id}`, {
         method: 'DELETE'
       });
       const result = await response.json();
@@ -205,7 +210,7 @@ function App() {
   useEffect(() => { // fetch data
     const fetchSchedule = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/v1/users`);
+        const response = await fetch(`${API_BASE_URL}/api/v1/users/getSchedule`);
         if (!response.ok) throw new Error('Failed to load schedule data');
         const result = await response.json();
         const normalized = result.map((item) => ({
@@ -269,7 +274,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/users`, {
+      const response = await fetch(`${API_BASE_URL}/api/v1/users/createData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
