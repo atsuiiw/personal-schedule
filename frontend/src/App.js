@@ -2,8 +2,6 @@ import './App.css';
 import { useState, useEffect } from 'react';
 const API_BASE_URL = "https://personal-schedule.onrender.com";
 
-const data = await fetch(`${API_BASE_URL}/api/v1/users/getSchedule`);
-console.log(data)
 
 const formatTime = (time) => {
   if (typeof time === 'string') return time.padStart(5, '0');
