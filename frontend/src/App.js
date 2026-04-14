@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-const API_BASE_URL = "https://personal-schedule-backend.vercel.app/";
+const API_BASE_URL = "https://personal-schedule.onrender.com";
 
 const formatTime = (time) => {
   if (typeof time === 'string') return time.padStart(5, '0');
